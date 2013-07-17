@@ -1,0 +1,650 @@
+<?xml-stylesheet type="text/xsl" href="./xsl/CDA.xsl"?>
+<!-- CCDA document implemented according to the implementation guide available at http://www.hl7.org/implement/standards/product_brief.cfm?product_id=258 
+                 This document implements the operative note template, including all of its required sections and some of its optional sections.
+                 Other structured fields from the operative report are implemented as simple sections without LOINC coding.
+            -->
+<ClinicalDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:hl7-org:v3 NIST_C32_schema/C32_CDA.xsd" xmlns="urn:hl7-org:v3" xmlns:sdtc="urn:hl7-org:sdtc">
+  <realmCode code="US" />
+  <typeId root="2.16.840.1.113883.1.3" extension="POCD_HD000040" />
+  <!-- US General Header Template -->
+  <templateId root="2.16.840.1.113883.10.20.22.1.1" />
+  <!-- Operative Note template  -->
+  <templateId root="2.16.840.1.113883.10.20.22.1.7" />
+  <id extension="TT988" root="2.16.840.1.113883.19.5.99999.1" />
+  <code codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" code="11504-8" displayName="Surgical Operation Note" />
+  <title>Operative Report</title>
+  <effectiveTime value="20130717182913" />
+  <confidentialityCode code="N" codeSystem="2.16.840.1.113883.5.25" />
+  <languageCode code="en-US" />
+  <setId extension="sTT988" root="2.16.840.1.113883.19.5.99999.19" />
+  <versionNumber value="1" />
+  <!-- recordTarget includes the patient identifiers. -->
+  <recordTarget>
+    <patientRole>
+      <id extension="456" root="2.16.840.1.113883.19.5.99999.2" />
+      <!-- MRN ID using HL7 example OID. -->
+      <addr nullFlavor="NI" />
+      <telecom nullFlavor="NI" />
+      <patient>
+        <name use="L">
+          <!-- L is "Legal" from HL7 EntityNameUse 2.16.840.1.113883.5.45 -->
+          <given>Skip</given>
+          <given></given>
+          <family>Manam</family>
+        </name>
+        <administrativeGenderCode code="M" codeSystem="2.16.840.1.113883.5.1" displayName="Male" />
+        <birthTime value="19680311" />
+      </patient>
+    </patientRole>
+  </recordTarget>
+  <!-- The author of the report is the surgeon or physician who performed the procedure. -->
+  <author>
+    <time value="20130717182913" />
+    <assignedAuthor>
+      <id extension="99999999" root="2.16.840.1.113883.4.6" />
+      <!-- General NUCC code for physicians. This could be narrowed by specialty. -->
+      <code code="200000000X" codeSystem="2.16.840.1.113883.6.101" displayName="Allopathic &amp; Osteopathic Physicians" />
+      <addr nullFlavor="NI" />
+      <telecom nullFlavor="NI" />
+      <assignedPerson>
+        <name>
+          <given>Orthopedic</given>
+          <family>Surgery</family>
+        </name>
+      </assignedPerson>
+    </assignedAuthor>
+  </author>
+  <!-- The custodian is the institution where the procedure was performed. -->
+  <custodian>
+    <assignedCustodian>
+      <representedCustodianOrganization>
+        <id extension="99999999" root="2.16.840.1.113883.4.6" />
+        <name>Default Center</name>
+        <telecom nullFlavor="NI" />
+        <addr nullFlavor="NI" />
+      </representedCustodianOrganization>
+    </assignedCustodian>
+  </custodian>
+  <!-- If the report is signed out, the legal authenticator is the surgeon. If the report is not signed out,
+                     then the legalAuthenticator element is absent. -->
+  <legalAuthenticator>
+    <time value="20130717182913" />
+    <signatureCode code="S" />
+    <assignedEntity>
+      <id extension="999999999" root="2.16.840.1.113883.4.6" />
+      <addr nullFlavor="NI" />
+      <telecom nullFlavor="NI" />
+      <assignedPerson>
+        <name>
+          <given>Orthopedic</given>
+          <family>Surgery</family>
+        </name>
+      </assignedPerson>
+    </assignedEntity>
+  </legalAuthenticator>
+  <!-- We are documenting a surgical procedure, which is represented as a serviceEvent with CPT-4 code. 
+                     If multiple procedures were performed, documntationOf is repeated for each with a separate CPT
+                     code in each serviceEvent. -->
+  <documentationOf typeCode="DOC">
+    <serviceEvent classCode="PCPR">
+      <code code="29888" codeSystem="2.16.840.1.113883.6.12" codeSystemName="CPT-4" displayName="Arthroscopically aided anterior cruciate ligament repair/augmentation or reconstruction" />
+      <effectiveTime>
+        <low value="20130717" />
+        <high value="20130717" />
+      </effectiveTime>
+      <performer typeCode="PPRF">
+        <functionCode code="PP" displayName="Primary Performer" codeSystem="2.16.840.1.113883.12.443" codeSystemName="Provider Role">
+          <originalText>Surgeon</originalText>
+        </functionCode>
+        <time>
+          <low value="201209091910-0400" />
+          <high value="201209161910-0400" />
+        </time>
+        <assignedEntity>
+          <!-- General NUCC code for physicians. This could be narrowed by specialty. -->
+          <code code="200000000X" codeSystem="2.16.840.1.113883.6.101" displayName="Allopathic &amp; Osteopathic Physicians" />
+          <addr nullFlavor="NI" />
+          <telecom nullFlavor="NI" />
+          <assignedPerson>
+            <name>
+              <given>Orthopedic</given>
+              <family>Surgery</family>
+            </name>
+          </assignedPerson>
+        </assignedEntity>
+      </performer>
+    </serviceEvent>
+  </documentationOf>
+  <documentationOf typeCode="DOC">
+    <serviceEvent classCode="PCPR">
+      <code code="29881" codeSystem="2.16.840.1.113883.6.12" codeSystemName="CPT-4" displayName="Arthroscopy, knee, surgical; with meniscectomy (medial OR lateral, including any meniscal shaving) including debridement/shaving of articular cartilage (chondroplasty), same or separate compartment(s), when performed" />
+      <effectiveTime>
+        <low value="20130717" />
+        <high value="20130717" />
+      </effectiveTime>
+      <performer typeCode="PPRF">
+        <functionCode code="PP" displayName="Primary Performer" codeSystem="2.16.840.1.113883.12.443" codeSystemName="Provider Role">
+          <originalText>Surgeon</originalText>
+        </functionCode>
+        <time>
+          <low value="201209091910-0400" />
+          <high value="201209161910-0400" />
+        </time>
+        <assignedEntity>
+          <!-- General NUCC code for physicians. This could be narrowed by specialty. -->
+          <code code="200000000X" codeSystem="2.16.840.1.113883.6.101" displayName="Allopathic &amp; Osteopathic Physicians" />
+          <addr nullFlavor="NI" />
+          <telecom nullFlavor="NI" />
+          <assignedPerson>
+            <name>
+              <given>Orthopedic</given>
+              <family>Surgery</family>
+            </name>
+          </assignedPerson>
+        </assignedEntity>
+      </performer>
+    </serviceEvent>
+  </documentationOf>
+  <!-- Operative Note uses a structuredBody to represent discrete data in the document. -->
+  <component>
+    <structuredBody>
+      <!-- Initial summary sections including date, staff, procedures, diagnoses. -->
+      <component>
+        <section>
+          <templateId root="2.16.840.1.113883.10.20.7.14" />
+          <code code="10223-6" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Operations Performed" />
+          <title>Operations Performed</title>
+          <text>
+            <list>
+              <item>Arthroscopically aided anterior cruciate ligament repair/augmentation or reconstruction (29888)</item>
+              <item>Arthroscopy, knee, surgical; with meniscectomy (medial OR lateral, including any meniscal shaving) including debridement/shaving of articular cartilage (chondroplasty), same or separate compartment(s), when performed (29881)</item>
+            </list>
+          </text>
+        </section>
+      </component>
+      <component>
+        <section>
+          <title>Surgeon</title>
+          <text>
+            <list>
+              <item>Orthopedic Surgery, MD</item>
+            </list>
+          </text>
+        </section>
+      </component>
+      <component>
+        <section>
+          <title>Date of surgery</title>
+          <text>
+            <list>
+              <item>Friday, June 21, 2013</item>
+            </list>
+          </text>
+        </section>
+      </component>
+      <!-- Preoperative and postoperative diagnosis sections are entry-level but using ICD-9 since that is what is available in production right now. -->
+      <component>
+        <section>
+          <templateId root="2.16.840.1.113883.10.20.22.2.34" />
+          <code code="10219-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="SURGICAL OPERATION NOTE PREOPERATIVE DX" />
+          <title>Preoperative Diagnosis</title>
+          <text>
+            <list>
+              <item>Sprain and strain of cruciate ligament of knee (844.2)</item>
+              <item>Derangement of posterior horn of medial meniscus (717.2)</item>
+            </list>
+          </text>
+          <entry>
+            <act moodCode="EVN" classCode="ACT">
+              <templateId root="2.16.840.1.113883.10.20.22.4.65" />
+              <!-- ** Preoperative Diagnosis Entry ** -->
+              <code code="10219-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Preoperative Diagnosis" />
+              <entryRelationship typeCode="SUBJ">
+                <observation classCode="OBS" moodCode="EVN">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.4" />
+                  <!-- Problem Observation template -->
+                  <observation classCode="OBS" moodCode="EVN">
+                    <templateId root="2.16.840.1.113883.10.20.22.4.4" />
+                    <id nullFlavor="UNK" />
+                    <code code="282291009" displayName="Diagnosis" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" />
+                    <statusCode code="completed" />
+                    <!-- ICD-9-CM is available -->
+                    <value nullFlavor="OTH" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="CD">
+                      <translation code="844.2" displayName="Sprain and strain of cruciate ligament of knee" codeSystem="2.16.840.1.113883.6.103" codeSystemName="ICD-9-CM" />
+                    </value>
+                  </observation>
+                </observation>
+              </entryRelationship>
+              <entryRelationship typeCode="SUBJ">
+                <observation classCode="OBS" moodCode="EVN">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.4" />
+                  <!-- Problem Observation template -->
+                  <observation classCode="OBS" moodCode="EVN">
+                    <templateId root="2.16.840.1.113883.10.20.22.4.4" />
+                    <id nullFlavor="UNK" />
+                    <code code="282291009" displayName="Diagnosis" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" />
+                    <statusCode code="completed" />
+                    <!-- ICD-9-CM is available -->
+                    <value nullFlavor="OTH" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="CD">
+                      <translation code="717.2" displayName="Derangement of posterior horn of medial meniscus" codeSystem="2.16.840.1.113883.6.103" codeSystemName="ICD-9-CM" />
+                    </value>
+                  </observation>
+                </observation>
+              </entryRelationship>
+            </act>
+          </entry>
+        </section>
+      </component>
+      <component>
+        <section>
+          <templateId root="2.16.840.1.113883.10.20.22.2.35" />
+          <code code="10218-6" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Postoperative Diagnosis" />
+          <title>Postoperative Diagnosis</title>
+          <text>
+            <list>
+              <item>Derangement of posterior horn of medial meniscus (717.2)</item>
+              <item>Sprain and strain of cruciate ligament of knee (844.2)</item>
+            </list>
+          </text>
+          <entry>
+            <act moodCode="EVN" classCode="ACT">
+              <templateId root="2.16.840.1.113883.10.20.22.4.65" />
+              <!-- ** Preoperative Diagnosis Entry ** -->
+              <code code="10219-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Preoperative Diagnosis" />
+              <entryRelationship typeCode="SUBJ">
+                <observation classCode="OBS" moodCode="EVN">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.4" />
+                  <!-- Problem Observation template -->
+                  <observation classCode="OBS" moodCode="EVN">
+                    <templateId root="2.16.840.1.113883.10.20.22.4.4" />
+                    <id nullFlavor="UNK" />
+                    <code code="282291009" displayName="Diagnosis" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" />
+                    <statusCode code="completed" />
+                    <!-- ICD-9-CM is available -->
+                    <value nullFlavor="OTH" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="CD">
+                      <translation code="717.2" displayName="Derangement of posterior horn of medial meniscus" codeSystem="2.16.840.1.113883.6.103" codeSystemName="ICD-9-CM" />
+                    </value>
+                  </observation>
+                </observation>
+              </entryRelationship>
+              <entryRelationship typeCode="SUBJ">
+                <observation classCode="OBS" moodCode="EVN">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.4" />
+                  <!-- Problem Observation template -->
+                  <observation classCode="OBS" moodCode="EVN">
+                    <templateId root="2.16.840.1.113883.10.20.22.4.4" />
+                    <id nullFlavor="UNK" />
+                    <code code="282291009" displayName="Diagnosis" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" />
+                    <statusCode code="completed" />
+                    <!-- ICD-9-CM is available -->
+                    <value nullFlavor="OTH" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="CD">
+                      <translation code="844.2" displayName="Sprain and strain of cruciate ligament of knee" codeSystem="2.16.840.1.113883.6.103" codeSystemName="ICD-9-CM" />
+                    </value>
+                  </observation>
+                </observation>
+              </entryRelationship>
+            </act>
+          </entry>
+        </section>
+      </component>
+      <!-- Indications gets its own logical separation in the document with a single sub-section. -->
+      <component>
+        <section>
+          <title>Indications for Surgery</title>
+          <component>
+            <section>
+              <templateId root="2.16.840.1.113883.10.20.22.2.29" />
+              <code code="59768-2" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="PROCEDURE INDICATIONS" />
+              <title>Indications</title>
+              <text>
+                <list>
+                  <item>Acute Knee Injury</item>
+                  <item>Knee Pain, Acute</item>
+                  <item>Swelling</item>
+                  <item>Stiffness</item>
+                  <item>Instability</item>
+                </list>
+              </text>
+            </section>
+          </component>
+        </section>
+      </component>
+      <!-- Risk and consent is a logical section of the document with subsections for different aspects of risk documentation. -->
+      <component>
+        <section>
+          <title>Risk and Consent</title>
+          <component>
+            <section>
+              <title>Risk Factors</title>
+              <text>
+                <list>
+                  <item>None</item>
+                </list>
+              </text>
+            </section>
+          </component>
+          <component>
+            <section>
+              <title>ASA Physical Status</title>
+              <text>
+                <list>
+                  <item>Class I.  Normal healthy patient</item>
+                </list>
+              </text>
+            </section>
+          </component>
+          <component>
+            <section>
+              <title>Informed Consent</title>
+              <text>
+                <list>
+                  <item>Yes: Indications for surgical procedure, risks, benefits, possible complications explained to patient including alternatives in treatment.  Patient had the chance to ask questions and all were answered to their satisfaction.  Patient understood and gave consent.</item>
+                </list>
+              </text>
+            </section>
+          </component>
+        </section>
+      </component>
+      <!-- Operative findings gets its own logical separation in the document with a single sub-section. -->
+      <component>
+        <section>
+          <title>Operative Findings</title>
+          <component>
+            <section>
+              <templateId root="2.16.840.1.113883.10.20.22.2.28" />
+              <code code="59776-5" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="PROCEDURE FINDINGS" />
+              <title>Operative Findings</title>
+              <text>
+                <list>
+                  <item>Suprapatellar pouch revealed hemosiderin staining</item>
+                  <item>Posterior surface of patella normal</item>
+                  <item>Femoral trochlea normal</item>
+                  <item>Complete tear of ACL</item>
+                  <item>Tibial end remaining</item>
+                  <item>Posterior horn of medial meniscus tear noted</item>
+                </list>
+              </text>
+            </section>
+          </component>
+        </section>
+      </component>
+      <!-- Preparation is a logical section of the document with subsections for different items. -->
+      <component>
+        <section>
+          <title>Preparation</title>
+          <component>
+            <section>
+              <templateId root="2.16.840.1.113883.10.20.22.2.25" />
+              <code code="599774-0" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Procedure anesthesia" />
+              <title>Anesthesia</title>
+              <text>
+                <list>
+                  <item>General</item>
+                  <item>Regional, Peripheral Nerve Blocks</item>
+                </list>
+              </text>
+            </section>
+          </component>
+          <component>
+            <section>
+              <title>Position</title>
+              <text>
+                <list>
+                  <item>Supine</item>
+                </list>
+              </text>
+            </section>
+          </component>
+          <component>
+            <section>
+              <title>Surgical Field</title>
+              <text>
+                <list>
+                  <item>Clipped</item>
+                  <item>1% tincture of Iodine</item>
+                </list>
+              </text>
+            </section>
+          </component>
+          <component>
+            <section>
+              <title>Draping</title>
+              <text>
+                <list>
+                  <item>Draped in a Sterile Fashion</item>
+                </list>
+              </text>
+            </section>
+          </component>
+          <component>
+            <section>
+              <title>Pre-medication</title>
+              <text>
+                <list>
+                  <item>Femoral nerve block</item>
+                  <item>1 Gm Ancef</item>
+                  <item>Prophylactic antibiotic</item>
+                </list>
+              </text>
+            </section>
+          </component>
+        </section>
+      </component>
+      <!-- Operative description is challenging with the current specification, which calls for a single operative description 
+                             field. In mTuitive's production application, each procedure documented in serviceEvent elements requires an operative 
+                             description, and conditionally a laterality section.  We've made a single container operative description section 
+                             containing subsections for each serviceEvent, which in turn have subsections for their own operative description and 
+                             laterality fields.  Each procedure's container section contains a Procedure Context template which appropriately sets
+                             sets the context for subsections in its scope.
+                        -->
+      <component>
+        <section>
+          <title>Operative Description</title>
+          <component>
+            <section>
+              <!-- We want to scope this section to the procedure that its subsections are documenting. -->
+              <act moodCode="EVN" classCode="ACT">
+                <templateId root="2.16.840.1.113883.10.20.6.2.5" />
+                <!-- Procedure Context template to let us know exactly which procedure the sections in this scope document.-->
+                <code code="29888" displayName="Arthroscopically aided anterior cruciate ligament repair/augmentation or reconstruction" codeSystem="2.16.840.1.113883.6.12" codeSystemName="CPT4" />
+                <effectiveTime value="20060823222400" />
+              </act>
+              <title>Arthroscopically aided anterior cruciate ligament repair/augmentation or reconstruction (29888)</title>
+              <component>
+                <section>
+                  <title>Laterality</title>
+                  <text>
+                    <list>
+                      <item>Right</item>
+                    </list>
+                  </text>
+                </section>
+              </component>
+              <component>
+                <section>
+                  <templateId root="2.16.840.1.113883.10.20.22.2.27" />
+                  <code code="29554-3" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="PROCEDURE DESCRIPTION" />
+                  <title>Operation Description</title>
+                  <text>
+                    <list>
+                      <item>Tourniquet Used</item>
+                      <item>Tourniquet inflated to 250mm Hg</item>
+                      <item>Portal incision performed on either side of the patellar tendon</item>
+                      <item>Arthrex Video and Crossfire Systems Used</item>
+                      <item>Arthroscope with video camera inserted through lateral portal</item>
+                      <item>Digital Images recorded for documentation purposes</item>
+                      <item>Debridement of ACL Remnant</item>
+                      <item>Limited lateral notchplasty performed</item>
+                      <item>Small transverse incision of proximal tibia performed</item>
+                      <item>Tibial alignment guide used</item>
+                      <item>Drill hole made over guidewire</item>
+                      <item>10mm Drill Hole made</item>
+                      <item>Knee shaved to remove debris from around drill site and soft tissue</item>
+                      <item>Edges smoothed with rasp</item>
+                      <item>Knee placed in hyperflexion position</item>
+                      <item>Femoral alignment guide used</item>
+                      <item>Guidewire placed through tibial drill hole, through isometric point of femur</item>
+                      <item>10mm drill hole made to a depth of 35 mm</item>
+                      <item>Notch made at 12 o'clock position</item>
+                      <item>Grafton injected into femoral drill hole</item>
+                      <item>10mm Tibialis Allograft Used</item>
+                      <item>Tibialis Allograft pulled into knee joint</item>
+                      <item>Arthex Femoral Screw Inserted 9x23mm</item>
+                      <item>Knee extended to 30 degrees</item>
+                      <item>Notch made at 12 o'clock position in tibial drill hole</item>
+                      <item>Nitinol wire inserted</item>
+                      <item>Bioabsorbable screw inserted over a nitinol wire</item>
+                      <item>Arthrex Bioabsorbable Screw 11x28mm Used</item>
+                      <item>Purchase of tibia secured</item>
+                      <item>Full range of motion with complete extension present</item>
+                      <item>Complete Correction of Lachman sign noted</item>
+                      <item>Hemostasis assured</item>
+                      <item>Knee irrigated</item>
+                      <item>Wounds closed with 3-0 Prolene</item>
+                      <item>Sterile compressive dressing applied</item>
+                    </list>
+                  </text>
+                </section>
+              </component>
+            </section>
+          </component>
+          <component>
+            <section>
+              <!-- We want to scope this section to the procedure that its subsections are documenting. -->
+              <act moodCode="EVN" classCode="ACT">
+                <templateId root="2.16.840.1.113883.10.20.6.2.5" />
+                <!-- Procedure Context template to let us know exactly which procedure the sections in this scope document.-->
+                <code code="29881" displayName="Arthroscopy, knee, surgical; with meniscectomy (medial OR lateral, including any meniscal shaving) including debridement/shaving of articular cartilage (chondroplasty), same or separate compartment(s), when performed" codeSystem="2.16.840.1.113883.6.12" codeSystemName="CPT4" />
+                <effectiveTime value="20060823222400" />
+              </act>
+              <title>Arthroscopy, knee, surgical; with meniscectomy (medial OR lateral, including any meniscal shaving) including debridement/shaving of articular cartilage (chondroplasty), same or separate compartment(s), when performed (29881)</title>
+              <component>
+                <section>
+                  <title>Laterality</title>
+                  <text>
+                    <list>
+                      <item>Right</item>
+                    </list>
+                  </text>
+                </section>
+              </component>
+              <component>
+                <section>
+                  <templateId root="2.16.840.1.113883.10.20.22.2.27" />
+                  <code code="29554-3" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="PROCEDURE DESCRIPTION" />
+                  <title>Operation Description</title>
+                  <text>
+                    <list>
+                      <item>Partial meniscectomy, Medial</item>
+                      <item>Posterior horn tear resected</item>
+                      <item>Stable Rim Present</item>
+                    </list>
+                  </text>
+                </section>
+              </component>
+            </section>
+          </component>
+        </section>
+      </component>
+      <!-- Discharge and condition is a logical section of the document containing various subsections relating to the 
+                             patient's condition and followup. -->
+      <component>
+        <section>
+          <title>Discharge and Condition</title>
+          <component>
+            <section>
+              <templateId root="2.16.840.1.113883.10.20.18.2.9" />
+              <code code="59770-8" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="PROCEDURE ESTIMATED BLOOD LOSS" />
+              <title>Estimated blood loss</title>
+              <text>
+                <list>
+                  <item>10 mL or less</item>
+                </list>
+              </text>
+            </section>
+          </component>
+          <component>
+            <section>
+              <title>Sponge/needle/instrument count</title>
+              <text>
+                <list>
+                  <item>Correct x 2</item>
+                </list>
+              </text>
+            </section>
+          </component>
+          <component>
+            <section>
+              <title>Discharge</title>
+              <text>
+                <list>
+                  <item>Surgical day care recovery</item>
+                </list>
+              </text>
+            </section>
+          </component>
+          <component>
+            <section>
+              <templateId root="2.16.840.1.113883.10.20.18.2.12" />
+              <code code="59775-7" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="PROCEDURE DISPOSITION" />
+              <title>Condition</title>
+              <text>
+                <list>
+                  <item>Stable</item>
+                </list>
+              </text>
+            </section>
+          </component>
+          <component>
+            <section>
+              <title>DVT Prophylaxis</title>
+              <text>
+                <list>
+                  <item>Not applicable</item>
+                </list>
+              </text>
+            </section>
+          </component>
+          <component>
+            <section>
+              <templateId root="2.16.840.1.113883.10.20.22.2.31" />
+              <code code="59773-2" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="PROCEDURE SPECIMENS TAKEN" />
+              <title>Specimen</title>
+              <text>
+                <list>
+                  <item>Sent to pathology</item>
+                  <item>Bone</item>
+                  <item>Synovium</item>
+                  <item>Cartilage</item>
+                </list>
+              </text>
+            </section>
+          </component>
+          <component>
+            <section>
+              <templateId root="2.16.840.1.113883.10.20.22.2.37" />
+              <code code="55109-3" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Complications" />
+              <title>Complications</title>
+              <text>
+                <list>
+                  <item>No complications</item>
+                </list>
+              </text>
+            </section>
+          </component>
+        </section>
+      </component>
+      <!-- Visual representation of document signatures.  Also represented with legalAuthenticator above. -->
+      <component>
+        <section>
+          <title>Signature</title>
+          <text>
+            <list>
+              <item>Signed by Orthopedic Surgery, MD at 2:29 PM Wednesday, July 17, 2013</item>
+            </list>
+          </text>
+        </section>
+      </component>
+    </structuredBody>
+  </component>
+</ClinicalDocument>
