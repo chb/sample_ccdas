@@ -1,4 +1,4 @@
-<?xml-stylesheet type="text/xsl" href="xsl/CDA.xsl"?>
+<?xml-stylesheet type="text/xsl" href="./Content/xsl/CDA.xsl"?>
 <!-- CCDA document implemented according to the implementation guide available at http://www.hl7.org/implement/standards/product_brief.cfm?product_id=258 
                  This document implements the operative note template, including all of its required sections and some of its optional sections.
                  Other structured fields from the operative report are implemented as simple sections without LOINC coding.
@@ -97,10 +97,11 @@
           <originalText>Surgeon</originalText>
         </functionCode>
         <time>
-          <low value="201209091910-0400" />
-          <high value="201209161910-0400" />
+          <low value="20121221" />
+          <high value="20121221" />
         </time>
         <assignedEntity>
+          <id extension="999999999" root="2.16.840.1.113883.4.6" />
           <!-- General NUCC code for physicians. This could be narrowed by specialty. -->
           <code code="200000000X" codeSystem="2.16.840.1.113883.6.101" displayName="Allopathic &amp; Osteopathic Physicians" />
           <addr nullFlavor="NI" />
@@ -122,7 +123,7 @@
       <component>
         <section>
           <templateId root="2.16.840.1.113883.10.20.7.14" />
-          <code code="10223-6" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Operations Performed" />
+          <code code="10223-6" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Surgical operation note surgical procedure" />
           <title>Operations Performed</title>
           <text>
             <list>
@@ -168,19 +169,16 @@
               <!-- ** Preoperative Diagnosis Entry ** -->
               <code code="10219-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Preoperative Diagnosis" />
               <entryRelationship typeCode="SUBJ">
+                <!-- Problem Observation template -->
                 <observation classCode="OBS" moodCode="EVN">
                   <templateId root="2.16.840.1.113883.10.20.22.4.4" />
-                  <!-- Problem Observation template -->
-                  <observation classCode="OBS" moodCode="EVN">
-                    <templateId root="2.16.840.1.113883.10.20.22.4.4" />
-                    <id nullFlavor="UNK" />
-                    <code code="282291009" displayName="Diagnosis" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" />
-                    <statusCode code="completed" />
-                    <!-- ICD-9-CM is available -->
-                    <value nullFlavor="OTH" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="CD">
-                      <translation code="455.0" displayName="Internal hemorrhoids without mention of complication" codeSystem="2.16.840.1.113883.6.103" codeSystemName="ICD-9-CM" />
-                    </value>
-                  </observation>
+                  <id nullFlavor="UNK" />
+                  <code code="282291009" displayName="Diagnosis" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" />
+                  <statusCode code="completed" />
+                  <!-- ICD-9-CM is available -->
+                  <value nullFlavor="OTH" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="CD">
+                    <translation code="455.0" displayName="Internal hemorrhoids without mention of complication" codeSystem="2.16.840.1.113883.6.103" codeSystemName="ICD-9-CM" />
+                  </value>
                 </observation>
               </entryRelationship>
             </act>
@@ -203,19 +201,16 @@
               <!-- ** Preoperative Diagnosis Entry ** -->
               <code code="10219-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Preoperative Diagnosis" />
               <entryRelationship typeCode="SUBJ">
+                <!-- Problem Observation template -->
                 <observation classCode="OBS" moodCode="EVN">
                   <templateId root="2.16.840.1.113883.10.20.22.4.4" />
-                  <!-- Problem Observation template -->
-                  <observation classCode="OBS" moodCode="EVN">
-                    <templateId root="2.16.840.1.113883.10.20.22.4.4" />
-                    <id nullFlavor="UNK" />
-                    <code code="282291009" displayName="Diagnosis" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" />
-                    <statusCode code="completed" />
-                    <!-- ICD-9-CM is available -->
-                    <value nullFlavor="OTH" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="CD">
-                      <translation code="455.0" displayName="Internal hemorrhoids without mention of complication" codeSystem="2.16.840.1.113883.6.103" codeSystemName="ICD-9-CM" />
-                    </value>
-                  </observation>
+                  <id nullFlavor="UNK" />
+                  <code code="282291009" displayName="Diagnosis" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" />
+                  <statusCode code="completed" />
+                  <!-- ICD-9-CM is available -->
+                  <value nullFlavor="OTH" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="CD">
+                    <translation code="455.0" displayName="Internal hemorrhoids without mention of complication" codeSystem="2.16.840.1.113883.6.103" codeSystemName="ICD-9-CM" />
+                  </value>
                 </observation>
               </entryRelationship>
             </act>
@@ -303,7 +298,7 @@
           <component>
             <section>
               <templateId root="2.16.840.1.113883.10.20.22.2.25" />
-              <code code="599774-0" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Procedure anesthesia" />
+              <code code="59774-0" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Procedure anesthesia" />
               <title>Anesthesia</title>
               <text>
                 <list>
@@ -367,14 +362,15 @@
           <title>Operative Description</title>
           <component>
             <section>
-              <!-- We want to scope this section to the procedure that its subsections are documenting. -->
-              <act moodCode="EVN" classCode="ACT">
-                <templateId root="2.16.840.1.113883.10.20.6.2.5" />
-                <!-- Procedure Context template to let us know exactly which procedure the sections in this scope document.-->
-                <code code="45378" displayName="Colonoscopy, flexible, proximal to splenic flexure; diagnostic, with or without collection of specimen(s) by brushing or washing, with or without colon decompression (separate procedure)" codeSystem="2.16.840.1.113883.6.12" codeSystemName="CPT4" />
-                <effectiveTime value="20060823222400" />
-              </act>
               <title>Colonoscopy, flexible, proximal to splenic flexure; diagnostic, with or without collection of specimen(s) by brushing or washing, with or without colon decompression (separate procedure) (45378)</title>
+              <entry>
+                <!-- We want to scope this section to the procedure that its subsections are documenting. -->
+                <act moodCode="EVN" classCode="ACT">
+                  <templateId root="2.16.840.1.113883.10.20.6.2.5" />
+                  <!-- Procedure Context template to let us know exactly which procedure the sections in this scope document.-->
+                  <code code="45378" displayName="Colonoscopy, flexible, proximal to splenic flexure; diagnostic, with or without collection of specimen(s) by brushing or washing, with or without colon decompression (separate procedure)" codeSystem="2.16.840.1.113883.6.12" codeSystemName="CPT4" />
+                </act>
+              </entry>
               <component>
                 <section>
                   <templateId root="2.16.840.1.113883.10.20.22.2.27" />
