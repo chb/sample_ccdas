@@ -34,10 +34,10 @@ CDA Header
 			<!-- Fake Social Security Number using the actual SSN OID. -->
 			<addr use="HP">
 				<!-- HP is "primary home" from codeSystem 2.16.840.1.113883.5.1119 -->
-				<streetAddressLine>1357 Amber Drive</streetAddressLine>
-				<city>Beaverton</city>
-				<state>OR</state>
-				<postalCode>97867</postalCode>
+				<streetAddressLine>104 Forest Rd.</streetAddressLine>
+				<city>Fanwood</city>
+				<state>NJ</state>
+				<postalCode>07023</postalCode>
 				<country>US</country>
 				<!-- US is "United States" from ISO 3166-1 Country Codes: 1.0.3166.1 -->
 			</addr>
@@ -266,10 +266,10 @@ CDA Header
 		<associatedEntity classCode="NOK">
 			<code code="MTH" codeSystem="2.16.840.1.113883.5.111"/>
 			<addr>
-				<streetAddressLine>17 Daws Rd.</streetAddressLine>
-				<city>Beaverton</city>
-				<state>OR</state>
-				<postalCode>97867</postalCode>
+				<streetAddressLine>104 Forest Rd.</streetAddressLine>
+				<city>Fanwood</city>
+				<state>NJ</state>
+				<postalCode>07023</postalCode>
 				<country>US</country>
 			</addr>
 			<telecom value="tel:(999)555-1212" use="WP"/>
